@@ -2,8 +2,13 @@
   "name": "market",
   "type": "module",
   "imports": {
-    "#*": "./*.js"
-  },
+  "#app": "./app.js",
+  "#db/client": "./db/client.js",
+  "#db/*": "./db/*.js",
+  "#api/*": "./api/*.js",
+  "#middleware/*": "./middleware/*.js",
+  "#utils/*": "./utils/*.js"
+},
   "scripts": {
     "start": "node --env-file=.env server.js",
     "dev": "node --watch --env-file=.env server.js",

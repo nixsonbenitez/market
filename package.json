@@ -2,13 +2,13 @@
   "name": "market",
   "type": "module",
   "imports": {
-  "#app": "./app.js",
-  "#db/client": "./db/client.js",
-  "#db/*": "./db/*.js",
-  "#api/*": "./api/*.js",
-  "#middleware/*": "./middleware/*.js",
-  "#utils/*": "./utils/*.js"
-},
+    "#app": "./app.js",
+    "#db/client": "./db/client.js",
+    "#db/*": "./db/*.js",
+    "#api/*": "./api/*.js",
+    "#middleware/*": "./middleware/*.js",
+    "#utils/*": "./utils/*.js"
+  },
   "scripts": {
     "start": "node --env-file=.env server.js",
     "dev": "node --watch --env-file=.env server.js",
@@ -24,6 +24,7 @@
     "bcrypt": "^5.1.1",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.1",
     "pg": "^8.14.1"
   },
   "devDependencies": {

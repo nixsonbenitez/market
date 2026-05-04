@@ -45,3 +45,14 @@ export async function getOrdersByUserId(user_id){
     const {rows: orders} = await db.query(sql, [user_id]);
     return orders;
 }
+
+//This will get all orders by logged in user that includes the following products (which require a token)
+export async function getOrdersByProductId(productId, userId){
+    const sql =`
+    SELECT orders.* FROM orders
+    JOIN orders_products ON orders.id = orders_products.order_id
+    WHERE orders_products.product_id = $1
+    AND orders.user_id =$2  `;
+    const {rows: orders} = await db.query(sql, [productId, userId]);
+    return orders;
+}

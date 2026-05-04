@@ -25,9 +25,8 @@ price decimal NOT NULL
 );
 
 CREATE TABLE orders_products(
-id serial PRIMARY KEY,
-quantity integer NOT NULL,
 product_id integer NOT NULL REFERENCES products(id) ON DELETE CASCADE,
 order_id integer NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
-unique(product_id, order_id)
+quantity integer NOT NULL,
+PRIMARY KEY( order_id, product_id)
 );

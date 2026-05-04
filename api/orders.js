@@ -39,9 +39,9 @@ router.post("/:id/products", async (req, res) => {
     if(!order) return res.status(404).send("Order not found");
     if(order.user_id !== Number(req.user.id)) return res.status(403).send("Not allowed")
     const {productId, quantity} = req.body;
-    if (!productId || !quantity) return res.staus(400).send("productId and quantity does not exists")
+    if (!productId || !quantity) return res.status(400).send("productId and quantity does not exists")
     const product = await getProductById(productId);
-    if(!product) return res.status(404).send("Not found!")
+    if(!product) return res.status(400).send("Not found!")
     const orderProduct = await createOrderProduct(order.id, productId, quantity);
     res.status(201).send(orderProduct);
     
@@ -51,7 +51,7 @@ router.post("/:id/products", async (req, res) => {
 router.get("/:id/products", async (req, res) => {
     const order = await getOrderById(req.params.id);
     if(!order)return res.status(404).send("Order not found")
-    if(order.user_id !== Number(req.user.id)) return res.status(403).send("Not allowed")
+    if(order.user_id !== Number(req.user.id)) return res.status(500).send("Not allowed")
     const products = await getProductsByOrderId(order.id);
     res.send(products)
 })

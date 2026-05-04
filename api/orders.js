@@ -51,7 +51,7 @@ router.post("/:id/products", async (req, res) => {
 router.get("/:id/products", async (req, res) => {
     const order = await getOrderById(req.params.id);
     if(!order)return res.status(404).send("Order not found")
-    if(order.user_id !== Number(req.user.id)) return res.status(500).send("Not allowed")
+    if(order.user_id !== Number(req.user.id)) return res.status(403).send("Not allowed")
     const products = await getProductsByOrderId(order.id);
     res.send(products)
 })
